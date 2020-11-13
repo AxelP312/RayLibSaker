@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks.Dataflow;
+﻿using System.Reflection.PortableExecutable;
+using System.Threading.Tasks.Dataflow;
 using System;
 using Raylib_cs;
 
@@ -13,6 +14,8 @@ namespace Raylibspel
 
             bool gameState = true;
             int scene = 0;
+
+            Player spelare = new Player(250, 250, KeyboardKey.KEY_W, KeyboardKey.KEY_S, KeyboardKey.KEY_A, KeyboardKey.KEY_D);
 
             while (!Raylib.WindowShouldClose())
             {
@@ -33,11 +36,9 @@ namespace Raylibspel
                     else if (scene == 1)
                     {
                         Raylib.BeginDrawing();
-                        
-                        
+                        spelare.Update();
                         Raylib.ClearBackground(Color.ORANGE);
-
-
+                        spelare.Draw();
                         Raylib.EndDrawing();
                     }
 
